@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="game-container">
+        <h1 id="game-title">Tic-Tac-Toe</h1>
+        <h2 id="status-text">Player X's Turn</h2>
+        
+        <div id="game-grid">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+        
+        <button id="reset-button">Restart Game</button>
+        <button id="new-student-btn">New Student (Clear Timer)</button>
+    </div>
+
+    <hr>
+    
+    <div id="challenge-hints">
+        <h2 style="font-size: 1.5em; color: #bce7fd; margin-bottom: 20px;">Code Breakdown & Debugging Challenges</h2>
+
+        <details open>
+            <summary style="font-size: 1.2em;">Understanding the Game Functions</summary>
+            <div style="padding-top: 10px;">
+                <p>The game works by changing the contents of a 9-item array (like a list) called <code>gameBoard</code>. The functions below read or write to this array.</p>
+                <br>
+                <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="background-color: #0f1c30;">
+                            <th style="padding: 8px; border: 1px solid #3282b8;">Function</th>
+                            <th style="padding: 8px; border: 1px solid #3282b8;">Purpose</th>
+                            <th style="padding: 8px; border: 1px solid #3282b8;">Hint Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background-color: #16213e;">
+                            <td style="padding: 8px; border: 1px solid #3282b8;"><code>initGame()</code></td>
+                            <td style="padding: 8px; border: 1px solid #3282b8;">Sets the starting state: clears the board, sets the player to 'X', and resets the text.</td>
+                            <td style="padding: 8px; border: 1px solid #3282b8;">Look here for setup errors.</td>
+                        </tr>
+                        <tr style="background-color: #16213e;">
+                            <td style="padding: 8px; border: 1px solid #3282b8;"><code>switchPlayer()</code></td>
+                            <td style="padding: 8px; border: 1px solid #3282b8;">Toggles <code>currentPlayer</code> and updates the status text.</td>
+                            <td style="padding: 8px; border: 1px solid #3282b8;">Check if the turn is changing correctly.</td>
+                        </tr>
+                        <tr style="background-color: #16213e;">
+                            <td style="padding: 8px; border: 1px solid #3282b8;"><code>checkGameEndAgainstCombos()</code></td>
+                            <td style="padding: 8px; border: 1px solid #3282b8;"><strong>Win/Draw Logic:</strong> Checks the current board state against the list of 8 winning lines.</td>
+                            <td style="padding: 8px; border: 1px solid #3282b8;">Check here for missing rules.</td>
+                        </tr>
+                        <tr style="background-color: #16213e;">
+                            <td style="padding: 8px; border: 1px solid #3282b8;"><code>handleCellClick(e)</code></td>
+                            <td style="padding: 8px; border: 1px solid #3282b8;">The <strong>main control flow</strong>. Updates data, checks for win, and changes turns.</td>
+                            <td style="padding: 8px; border: 1px solid #3282b8;">Check here for timing/order errors.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <p>*(The <code>checkGameEndByCounting()</code> function is included for advanced users only.)*</p>
+            </div>
+        </details>
+
+        <details open>
+            <summary style="font-size: 1.2em;">Debugging Challenges (Logic Breaks)</summary>
+            <p> <em> Note: </em> Be sure to uncomment (remove "//") the problem solved flags in the code to mark that you have completed that specific problem.</p>
+            <ul>
+                <li>
+                    <strong>Problem 1: Wrong Space Insertions</strong>
+                    <p>A player can overwrite their opponents moves, or even keep moving after the game.</p>
+                    <p style="margin-top: 5px;"><strong>Hint:</strong> There is code in <code>handleCellClick()</code> that prevents this from happening but has been commented out, rendering it useless. Just remove the "//" to add that functionality back in.</p>
+                </li>                
+                <hr style="width: 100%; height: 1px; background-color: #3282b8; margin: 10px 0;">
+                
+                <li>
+                    <strong>Problem 2: The Missing Win</strong>
+                    <p>When you get three marks in the <strong>rightmost vertical column (indices 2, 5, 8)</strong>, the game does <strong>not</strong> stop and continues to the next player. The winner is never declared!</p>
+                    <p style="margin-top: 5px;"><strong>Hint:</strong> The list of rules for winning is incomplete. Check the <code>winningCombos</code> array near the top of the script and add the missing line.</p>
+                </li>
+                <hr style="width: 100%; height: 1px; background-color: #3282b8; margin: 10px 0;">
+                
+                <li>
+                    <strong>Problem 3: No Ties Allowed</strong>
+                    <p>If the board fills up and no one has won, the game doesn't end. Players can keep clicking full squares, and the status text never changes to "It's a tie!".</p>
+                    <p style="margin-top: 5px;"><strong>Hint:</strong> You must explicitly check if the board is full. The logic is commented out in <code>checkGameEndAgainstCombos()</code>. Uncomment the <strong>Tie condition</strong> logic by removing the "//" marks.</p>
+                </li>
+                <hr style="width: 100%; height: 1px; background-color: #3282b8; margin: 10px 0;">
+                
+                <li>
+                    <strong>Challenge Problem 4: Hard Mode Break (For Advanced Users)</strong>
+                    <p>If you switch the game to use the <code>checkGameEndByCounting()</code> function, the game logic immediately breaks and misses wins in the second and third rows (indices 3–8). This is because the row counter resets incorrectly.</p>
+                    <p style="margin-top: 5px;"><strong>Hint:</strong> The row counter needs to reset only when the index is divisible by 3 (the row length). Fix by adding the condition in the <code>checkGameEndByCounting()</code> loop.</p>
+                </li>
+            </ul>
+        </details>
+    </div>
+    <script src="leaderboard.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

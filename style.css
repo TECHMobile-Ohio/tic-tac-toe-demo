@@ -1,0 +1,173 @@
+/* Global Reset and Typography */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a1a2e; /* Dark background */
+    color: #e9e9e9; /* Light text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#game-container {
+    background-color: #16213e; /* Slightly darker container */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+#game-title {
+    font-size: 2.5em;
+    color: #0f4c75; /* A vibrant blue */
+    margin-bottom: 10px;
+}
+
+#status-text {
+    font-size: 1.5em;
+    margin-bottom: 25px;
+    color: #bce7fd; /* Light status text */
+    font-weight: 700;
+}
+
+/* --- Game Grid Layout --- */
+#game-grid {
+    display: grid;
+    /* Creates a perfect 3x3 grid */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 300px; /* Base size for the grid */
+    height: 300px;
+    margin: 0 auto;
+    border: 3px solid #3282b8; /* Main border color */
+    border-radius: 8px;
+    overflow: hidden; /* Ensures internal shadows/borders look good */
+}
+
+/* --- Individual Cells --- */
+.cell {
+    /* Center the content (X or O) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5em;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: #0f1c30; /* Dark cell background */
+    
+    /* Internal borders to separate cells */
+    border: 1px solid #3282b8;
+    transition: background-color 0.2s ease;
+}
+
+.cell:hover {
+    background-color: #24354b; /* Subtle hover effect */
+}
+
+/* Marker Styles (added via JavaScript) */
+.cell.playerX {
+    color: #ff416c; /* Bright pink for X */
+}
+
+.cell.playerO {
+    color: #41ffae; /* Bright green for O */
+}
+
+/* --- Game Control Buttons --- */
+
+/* Shared Styles (Shape, Size, Font) */
+#reset-button, 
+#new-student-btn {
+    margin-top: 20px;       /* Spacing between elements */
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-weight: 700;
+    width: 80%;             /* Makes them look uniform in width */
+    max-width: 300px;
+}
+
+/* Shared Active Effect (The "Click" squish) */
+#reset-button:active, 
+#new-student-btn:active {
+    transform: scale(0.98);
+}
+
+/* --- Button Specific Colors --- */
+
+/* Restart Game (The Theme Blue) */
+#reset-button {
+    background-color: #3282b8;
+    color: #1a1a2e;
+}
+
+#reset-button:hover {
+    background-color: #4a9ecb;
+}
+
+/* New Student (Warning Red) */
+#new-student-btn {
+    background-color: #ef4444;
+    color: #e9e9e9; /* Light text reads better on red */
+    margin-bottom: 30px; /* Add some space at the bottom of the page */
+}
+
+#new-student-btn:hover {
+    background-color: #ff6b6b; /* Lighter red on hover */
+}
+
+/* --- Horizontal Divider Line (for cleanness) --- */
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #3282b8; /* Matching the grid border color */
+    margin: 40px auto;
+    width: 80%;
+}
+
+/* --- Challenge Hints --- */
+
+#challenge-hints {
+    max-width: 600px;
+    width: 90%;
+    margin-bottom: 50px;
+    padding: 10px;
+}
+
+#challenge-hints h3 {
+    font-size: 1.2em;
+    color: #bce7fd;
+    margin-bottom: 15px;
+}
+
+#challenge-hints details {
+    background-color: #16213e;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 0 15px;
+    color: #e9e9e9;
+}
+
+#challenge-hints summary {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 0;
+    list-style: none; /* Hide default triangle */
+}
+
+#challenge-hints ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    padding-bottom: 15px;
+    font-size: 0.9em;
+}
+
+#challenge-hints li {
+    margin-bottom: 5px;
+}
