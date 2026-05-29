@@ -43,6 +43,6 @@ Right-click the browser page, select Inspect, and look at the Console tab for he
 
 ### 🤖 See Your Fixed Game Live!
 
-Good luck, and happy debugging! 💻✨
+### Good luck, and happy debugging! 💻✨
 
 
